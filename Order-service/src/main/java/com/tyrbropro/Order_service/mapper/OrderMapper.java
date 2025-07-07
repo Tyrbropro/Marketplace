@@ -6,6 +6,8 @@ import com.tyrbropro.Order_service.entity.Order;
 
 public interface OrderMapper {
     OrderResponseDTO toDTO(Order order);
+
     Order toEntity(OrderRequestDTO dto);
+
     void updateOrder(Order order, OrderRequestDTO dto);
 }

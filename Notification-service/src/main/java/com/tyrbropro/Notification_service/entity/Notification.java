@@ -15,11 +15,16 @@ public class Notification {
 
     @Id
     private Long id;
+
     private Long userId;
+
     private String message;
+
     private String type;
+
     private Boolean isRead;
+
     private LocalDateTime createdAt;
 
-    public enum Type{INFO, WARNING, ERROR}
+    public enum Type { INFO, WARNING, ERROR }
 }

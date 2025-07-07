@@ -55,15 +55,15 @@ public class JwtService {
 
             return true;
         } catch (ExpiredJwtException e) {
-            LOGGER.error("Expired JWT token" , e);
-        } catch (UnsupportedJwtException e){
-            LOGGER.error("Unsupported JWT token" , e);
-        } catch (MalformedJwtException e){
-            LOGGER.error("Malformed JWT token" , e);
-        } catch (SecurityException e){
-            LOGGER.error("Security exception" , e);
-        } catch (Exception e){
-            LOGGER.error("Invalid token" , e);
+            LOGGER.error("Expired JWT token", e);
+        } catch (UnsupportedJwtException e) {
+            LOGGER.error("Unsupported JWT token", e);
+        } catch (MalformedJwtException e) {
+            LOGGER.error("Malformed JWT token", e);
+        } catch (SecurityException e) {
+            LOGGER.error("Security exception", e);
+        } catch (Exception e) {
+            LOGGER.error("Invalid token", e);
         }
         return false;
     }

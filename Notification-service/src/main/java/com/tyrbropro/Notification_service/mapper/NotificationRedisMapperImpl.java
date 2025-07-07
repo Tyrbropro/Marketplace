@@ -1,8 +1,6 @@
 package com.tyrbropro.Notification_service.mapper;
 
-import com.tyrbropro.Notification_service.dto.notification.NotificationRequestDTO;
 import com.tyrbropro.Notification_service.dto.notification.NotificationResponseDTO;
-import com.tyrbropro.Notification_service.entity.Notification;
 import com.tyrbropro.Notification_service.entity.NotificationRedis;
 import org.springframework.stereotype.Component;
 

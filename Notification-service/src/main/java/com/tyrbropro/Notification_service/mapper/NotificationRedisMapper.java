@@ -5,5 +5,6 @@ import com.tyrbropro.Notification_service.entity.NotificationRedis;
 
 public interface NotificationRedisMapper {
     NotificationResponseDTO toDTO(NotificationRedis notification);
+
     NotificationRedis toEntity(NotificationResponseDTO notificationRequestDTO);
 }

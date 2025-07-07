@@ -1,6 +1,5 @@
 package com.tyrbropro.User_service.mapper;
 
-import com.tyrbropro.User_service.dto.user.UserRequestDTO;
 import com.tyrbropro.User_service.dto.user.UserResponseDTO;
 import com.tyrbropro.User_service.entity.UserRedis;
 import java.time.LocalDateTime;

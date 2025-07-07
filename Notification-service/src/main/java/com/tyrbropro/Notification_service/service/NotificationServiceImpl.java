@@ -17,11 +17,15 @@ import org.springframework.transaction.annotation.Transactional;
 public class NotificationServiceImpl implements NotificationService {
 
     private final NotificationRedisRepository notificationRedisRepository;
+
     private final NotificationRepository notificationRepository;
+
     private final NotificationRedisMapper notificationRedisMapper;
+
     private final NotificationMapper notificationMapper;
 
-    public NotificationServiceImpl(NotificationRedisRepository notificationRedisRepository, NotificationRepository notificationRepository,
+    public NotificationServiceImpl(NotificationRedisRepository notificationRedisRepository,
+                                   NotificationRepository notificationRepository,
                                    NotificationRedisMapper notificationRedisMapper,
                                    NotificationMapper notificationMapper) {
         this.notificationRedisRepository = notificationRedisRepository;
@@ -70,13 +74,13 @@ public class NotificationServiceImpl implements NotificationService {
     public List<NotificationResponseDTO> markAllAsRead(Long userId) {
         List<NotificationResponseDTO> updatedList = new ArrayList<>();
 
-        Iterable<NotificationRedis> redisNotifications = notificationRedisRepository.findAllByUserIdAndIsReadFalse(userId);
+        Iterable<NotificationRedis> redisNotifications =
+                notificationRedisRepository.findAllByUserIdAndIsReadFalse(userId);
+
         for (NotificationRedis redisNotification : redisNotifications) {
                 redisNotification.setIsRead(true);
 
-                Notification entity = notificationMapper.toEntity(
-                        notificationRedisMapper.toDTO(redisNotification)
-                );
+                Notification entity = notificationMapper.toEntity(notificationRedisMapper.toDTO(redisNotification));
                 notificationRedisRepository.deleteById(entity.getId());
                 Notification updated = notificationRepository.save(entity);
 

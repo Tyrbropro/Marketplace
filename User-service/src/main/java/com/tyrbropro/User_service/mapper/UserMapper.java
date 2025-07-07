@@ -6,6 +6,8 @@ import com.tyrbropro.User_service.entity.User;
 
 public interface UserMapper {
     UserResponseDTO toDto(User user);
+
     User toEntity(UserRequestDTO dto);
+
     void updateEntity(User user, UserRequestDTO dto);
 }

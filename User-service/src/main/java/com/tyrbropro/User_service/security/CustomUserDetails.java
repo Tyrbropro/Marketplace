@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public record CustomUserDetails(User user) implements UserDetails {
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities(){
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         String roleName = "ROLE_" + user.getRole();
         return List.of(new SimpleGrantedAuthority(roleName));
     }

@@ -6,6 +6,8 @@ import com.tyrbropro.Notification_service.entity.Notification;
 
 public interface NotificationMapper {
     NotificationResponseDTO toDTO(Notification notification);
+
     Notification toEntity(NotificationRequestDTO notificationRequestDTO);
+
     Notification toEntity(NotificationResponseDTO dto);
 }

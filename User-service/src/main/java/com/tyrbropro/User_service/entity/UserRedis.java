@@ -14,10 +14,16 @@ import org.springframework.data.redis.core.RedisHash;
 public class UserRedis {
     @Id
     private Long id;
+
     private String username;
+
     private String email;
+
     private String password;
+
     private String role;
+
     private Float rating;
+
     private LocalDateTime createdAt;
 }

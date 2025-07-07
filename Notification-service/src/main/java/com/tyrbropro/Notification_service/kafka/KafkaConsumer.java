@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class KafkaConsumer {
 
     private final ObjectMapper objectMapper;
+
     private final NotificationService notificationService;
 
     public KafkaConsumer(ObjectMapper objectMapper, NotificationService notificationService) {

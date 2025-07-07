@@ -1,7 +1,6 @@
 package com.tyrbropro.Notification_service.repository;
 
 import com.tyrbropro.Notification_service.entity.NotificationRedis;
-import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

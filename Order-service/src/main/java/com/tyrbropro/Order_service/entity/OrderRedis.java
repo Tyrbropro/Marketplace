@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
-import org.springframework.data.relational.core.mapping.Table;
 
 @RedisHash("Order")
 @Data
@@ -16,10 +15,16 @@ public class OrderRedis {
 
     @Id
     private Long id;
+
     private String title;
+
     private String description;
+
     private String status;
+
     private Long customerId;
+
     private Long executorId;
+
     private LocalDateTime createdAt;
 }

@@ -18,14 +18,20 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderServiceImpl implements OrderService {
 
     private final UserClient userClient;
+
     private final OrderRedisRepository orderRedisRepository;
+
     private final OrderRepository orderRepository;
+
     private final OrderRedisMapper orderRedisMapper;
+
     private final OrderMapper orderMapper;
+
     private final KafkaProducer kafkaProducer;
 
-    public OrderServiceImpl(UserClient userClient, OrderRepository orderRepository, OrderRedisRepository orderRedisRepository,
-                            OrderRedisMapper orderRedisMapper, OrderMapper orderMapper, KafkaProducer kafkaProducer) {
+    public OrderServiceImpl(UserClient userClient, OrderRepository orderRepository,
+                            OrderRedisRepository orderRedisRepository, OrderRedisMapper orderRedisMapper,
+                            OrderMapper orderMapper, KafkaProducer kafkaProducer) {
         this.userClient = userClient;
         this.orderRepository = orderRepository;
         this.orderRedisRepository = orderRedisRepository;

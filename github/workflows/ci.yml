@@ -1,0 +1,83 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-checkstyle:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      # =======================
+      # Checkstyle
+      # =======================
+      - name: Run Checkstyle for User-service
+        working-directory: ./User-service
+        run: ./gradlew checkstyleMain
+
+      - name: Run Checkstyle for Order-service
+        working-directory: ./Order-service
+        run: ./gradlew checkstyleMain
+
+      - name: Run Checkstyle for Notification-service
+        working-directory: ./Notification-service
+        run: ./gradlew checkstyleMain
+
+      # =======================
+      # Gradle build
+      # =======================
+      - name: Build User-service
+        working-directory: ./User-service
+        run: ./gradlew clean build
+
+      - name: Build Order-service
+        working-directory: ./Order-service
+        run: ./gradlew clean build
+
+      - name: Build Notification-service
+        working-directory: ./Notification-service
+        run: ./gradlew clean build
+
+      # =======================
+      # Upload JAR artifacts
+      # =======================
+      - name: Upload User-service jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: user-service-jar
+          path: ./User-service/build/libs/*.jar
+
+      - name: Upload Order-service jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: order-service-jar
+          path: ./Order-service/build/libs/*.jar
+
+      - name: Upload Notification-service jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: notification-service-jar
+          path: ./Notification-service/build/libs/*.jar
+
+      # =======================
+      # Docker build
+      # =======================
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build all docker images
+        run: docker compose build

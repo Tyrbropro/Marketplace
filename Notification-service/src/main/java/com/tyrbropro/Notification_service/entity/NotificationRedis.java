@@ -15,9 +15,14 @@ public class NotificationRedis {
 
     @Id
     private Long id;
+
     private Long userId;
+
     private String message;
+
     private String type;
+
     private Boolean isRead;
+
     private LocalDateTime createdAt;
 }

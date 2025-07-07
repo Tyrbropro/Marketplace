@@ -16,12 +16,18 @@ public class Order {
 
     @Id
     private Long id;
+
     private String title;
+
     private String description;
+
     private String status;
+
     private Long customerId;
+
     private Long executorId;
+
     private LocalDateTime createdAt;
 
-    public enum Status {NEW, ACCEPTED, IN_PROGRESS, DONE, CANCELLED}
+    public enum Status { NEW, ACCEPTED, IN_PROGRESS, DONE, CANCELLED }
 }

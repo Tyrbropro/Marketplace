@@ -22,13 +22,20 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+
     private final UserRedisRepository userRedisRepository;
+
     private final UserRedisMapper userRedisMapper;
+
     private final UserMapper userMapper;
+
     private final JwtService jwtService;
+
     private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, UserRedisRepository userRedisRepository, UserRedisMapper userRedisMapper, UserMapper userMapper, JwtService jwtService, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, UserRedisRepository userRedisRepository,
+                           UserRedisMapper userRedisMapper, UserMapper userMapper, JwtService jwtService,
+                           PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userRedisRepository = userRedisRepository;
         this.userRedisMapper = userRedisMapper;
@@ -46,7 +53,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public JwtAuthenticationDTO refreshToken(RefreshTokenDTO refreshTokenDTO) throws Exception {
         String refreshToken = refreshTokenDTO.getRefreshToken();
-        if(refreshToken != null && jwtService.validateJwtToken(refreshToken)) {
+        if (refreshToken != null && jwtService.validateJwtToken(refreshToken)) {
             User user = findByEmail(jwtService.getEmailFromToken(refreshToken));
             return jwtService.refreshBaseToken(user.getEmail(), refreshToken);
         }
@@ -96,6 +103,7 @@ public class UserServiceImpl implements UserService {
     }
 
     private User findByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow(()-> new RuntimeException(String.format("User with email %s not found", email)));
+        return userRepository.findByEmail(email).orElseThrow(() ->
+                new RuntimeException(String.format("User with email %s not found", email)));
     }
 }

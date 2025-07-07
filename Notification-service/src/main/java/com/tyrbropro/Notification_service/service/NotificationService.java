@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface NotificationService {
     void processNotification(OrderTopicDTO dto);
+
     NotificationResponseDTO markAsRead(Long id);
+
     List<NotificationResponseDTO> markAllAsRead(Long userId);
 }

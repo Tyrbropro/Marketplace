@@ -1,6 +1,5 @@
 package com.tyrbropro.Order_service.repository;
 
-import com.tyrbropro.Order_service.entity.Order;
 import com.tyrbropro.Order_service.entity.OrderRedis;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
