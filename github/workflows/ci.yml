@@ -16,6 +16,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Create .env file
+        run: |
+          echo "DB_URL=${{ secrets.DB_URL }}" >> .env
+          echo "DB_USER=${{ secrets.DB_USER }}" >> .env
+          echo "DB_PASS=${{ secrets.DB_PASS }}" >> .env
+          echo "JWT_TOKEN=${{ secrets.JWT_TOKEN }}" >> .env
+
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
@@ -42,14 +49,27 @@ jobs:
       # =======================
       - name: Build User-service
         working-directory: ./User-service
+        env:
+          JWT_TOKEN: ${{ secrets.JWT_TOKEN }}
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASS: ${{ secrets.DB_PASS }}
         run: ./gradlew clean build
 
       - name: Build Order-service
         working-directory: ./Order-service
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASS: ${{ secrets.DB_PASS }}
         run: ./gradlew clean build
 
       - name: Build Notification-service
         working-directory: ./Notification-service
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASS: ${{ secrets.DB_PASS }}
         run: ./gradlew clean build
 
       # =======================
