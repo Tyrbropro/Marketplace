@@ -1,0 +1,2 @@
+rootProject.name = 'marketplace'
+include 'avro-models', 'order-service', 'notification-service', 'user-service'

@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: User-service
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+  data:
+    redis:
+      host: redis
+      port: 6379
+
+jwt:
+  secret: ${JWT_TOKEN}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

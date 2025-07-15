@@ -1,0 +1,14 @@
+{
+  "namespace": "com.tyrbropro.avro",
+  "type": "record",
+  "name": "OrderTopicDto",
+  "fields": [
+    {"name": "userId", "type": ["null", "long"], "default": null},
+    {"name": "message", "type": ["null", "string"], "default": null},
+    {"name": "type", "type": ["null", "string"], "default": null},
+    {"name": "time", "type": ["null", {
+      "type": "long",
+      "logicalType": "timestamp-millis"
+    }], "default": null}
+  ]
+}
